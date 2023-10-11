@@ -1,0 +1,50 @@
+.checkout-side-menu {
+  width: 360px;
+  height: calc(100vh - 68px);
+  top: 68px;
+  z-index: 15;
+}
+
+.checkout-side-menu-enter {
+  transform: translateY(-101%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.checkout-side-menu-enter-active {
+  transform: translateY(0);
+}
+
+.checkout-side-menu-exit {
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.checkout-side-menu-exit-active {
+  transform: translateY(-101%);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #000, white, black);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Otras propiedades personalizadas para el scrollbar */
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+::-webkit-scrollbar-track-piece {
+  background: transparent;
+}

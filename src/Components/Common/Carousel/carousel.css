@@ -1,0 +1,28 @@
+/* Estilo para el carrusel */
+.carousel {
+  max-width: 100%; /* Establece el ancho máximo del carrusel */
+  margin: 0 auto;
+}
+
+.carousel-item {
+  background-color: #f4f4f4; /* Cambia el color de fondo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Estilo para las flechas de navegación */
+.carousel .control-arrow {
+  font-size: 24px;
+  color: #000000;
+}
+
+/* Estilo para la leyenda debajo de las imágenes */
+.legend {
+  font-size: 18px;
+  margin-top: 10px;
+  color: #333;
+}

@@ -1,2 +1,3 @@
-# shopi-ecommerce
-This is an e-commerce created in a Platzi course as part of a project for approval.
+# E-Commerce Shopi
+
+Vite JS - React JS - TailwindCSS

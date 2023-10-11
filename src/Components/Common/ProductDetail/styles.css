@@ -1,0 +1,23 @@
+.product-detail {
+  width: 360px;
+  height: calc(100vh - 68px);
+  top: 68px;
+}
+
+.product-detail-enter {
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.product-detail-enter-active {
+  transform: translateY(0);
+}
+
+.product-detail-exit {
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.product-detail-exit-active {
+  transform: translateY(-100%);
+}
