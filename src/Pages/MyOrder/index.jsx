@@ -21,7 +21,7 @@ const MyOrder = () => {
       <div className="flex flex-col w-80">
         {context.order?.[
           index === "last" ? context.order?.length - 1 : index
-        ]?.products.map((product) => {
+        ]?.products?.map((product) => {
           return (
             <OrderCard
               key={product.id}
