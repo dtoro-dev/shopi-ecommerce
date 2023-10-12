@@ -3,7 +3,7 @@ import Carousel from "./Carousel";
 import CheckoutSideMenu from "./CheckoutSideMenu";
 import Navbar from "./Navbar";
 import Notification from "./Notification";
-import OrderCard from "./OrderCart";
+import OrderCard from "./OrderCard";
 import ProductDetail from "./ProductDetail";
 
 export {
