@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import { getCategory } from "../Api/categories";
+import { getProducts } from "../Api/products";
 
 export const CartContext = createContext();
 
@@ -21,10 +23,46 @@ const CartProvider = ({ children }) => {
   // Orders
   const [order, setOrder] = useState([]);
 
+  // Items
+  const [items, setItems] = useState([]);
+
+  // Categories
+  const [category, setCategory] = useState([]);
+
+  // Search
+  const [searchByTitle, setSearchByTitle] = useState("");
+
+  // Item filtered
+  const [filteredItems, setFilteredItems] = useState([]);
+
   // Checkout Side Menu - Open/Close
   const [isCheckoutSideMenuOpen, setCheckoutSideMenuOpen] = useState(false);
   const showCheckoutSideMenu = () => setCheckoutSideMenuOpen(true);
   const hideCheckoutSideMenu = () => setCheckoutSideMenuOpen(false);
+
+  const init = async () => {
+    const products = await getProducts();
+    const categories = await getCategory();
+
+    setItems(products ?? []);
+    setCategory(categories ?? []);
+  };
+
+  useEffect(() => {
+    init();
+  }, []);
+
+  const filteredItemsByTitle = (items, searchByTitle) => {
+    return items?.filter((item) =>
+      item.title.toLowerCase().includes(searchByTitle.toLowerCase())
+    );
+  };
+
+  useEffect(() => {
+    if (searchByTitle) {
+      setFilteredItems(filteredItemsByTitle(items, searchByTitle));
+    }
+  }, [items, searchByTitle]);
 
   return (
     <CartContext.Provider
@@ -43,6 +81,12 @@ const CartProvider = ({ children }) => {
         hideCheckoutSideMenu,
         order,
         setOrder,
+        items,
+        setItems,
+        searchByTitle,
+        setSearchByTitle,
+        filteredItems,
+        category,
       }}
     >
       {children}

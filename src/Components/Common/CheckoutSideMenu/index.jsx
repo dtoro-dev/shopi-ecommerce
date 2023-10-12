@@ -1,9 +1,10 @@
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import moment from "moment";
 import { useContext, useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { CartContext } from "../../../Context/CartContext";
 import { priceFormat, totalPrice, totalTax } from "../../../utils";
-import OrderCard from "../OrderCart";
+import OrderCard from "../OrderCard";
 import "./styles.css";
 
 const CheckoutSideMenu = () => {
@@ -44,6 +45,7 @@ const CheckoutSideMenu = () => {
     context.setOrder([...context.order, newOrder]);
 
     context.setCartProduct([]);
+    hideCheckout();
   };
 
   useEffect(() => {
@@ -75,7 +77,10 @@ const CheckoutSideMenu = () => {
         {context.cartProduct?.map((product, index) => (
           <OrderCard
             key={index}
-            product={product}
+            id={product.id}
+            title={product.title}
+            images={product.images}
+            price={product.price}
             onDeleteProduct={onDeleteProduct}
           />
         ))}
@@ -97,15 +102,17 @@ const CheckoutSideMenu = () => {
           <p>TOTAL</p>
           <p className="font-medium text-2xl">$ {priceFormat(receipt.total)}</p>
         </div>
-        <button
-          className={`w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded ${
-            totalPrice(context.cartProduct) === 0 ? "disabled:bg-sky-950" : ""
-          }`}
-          disabled={totalPrice(context.cartProduct) === 0}
-          onClick={() => handleCheckout()}
-        >
-          PAGAR
-        </button>
+        <Link to="/my-orders/last">
+          <button
+            className={`w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded ${
+              totalPrice(context.cartProduct) === 0 ? "disabled:bg-sky-950" : ""
+            }`}
+            disabled={totalPrice(context.cartProduct) === 0}
+            onClick={() => handleCheckout()}
+          >
+            CHECKOUT
+          </button>
+        </Link>
       </div>
     </aside>
   );
