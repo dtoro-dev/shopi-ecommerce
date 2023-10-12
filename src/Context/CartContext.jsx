@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { createContext, useEffect, useState } from "react";
+import { getCategory } from "../Api/categories";
 import { getProducts } from "../Api/products";
 
 export const CartContext = createContext();
@@ -25,6 +26,9 @@ const CartProvider = ({ children }) => {
   // Items
   const [items, setItems] = useState([]);
 
+  // Categories
+  const [category, setCategory] = useState([]);
+
   // Search
   const [searchByTitle, setSearchByTitle] = useState("");
 
@@ -38,7 +42,10 @@ const CartProvider = ({ children }) => {
 
   const init = async () => {
     const products = await getProducts();
+    const categories = await getCategory();
+
     setItems(products ?? []);
+    setCategory(categories ?? []);
   };
 
   useEffect(() => {
@@ -56,8 +63,6 @@ const CartProvider = ({ children }) => {
       setFilteredItems(filteredItemsByTitle(items, searchByTitle));
     }
   }, [items, searchByTitle]);
-
-  console.log("filteredItems", filteredItems);
 
   return (
     <CartContext.Provider
@@ -81,6 +86,7 @@ const CartProvider = ({ children }) => {
         searchByTitle,
         setSearchByTitle,
         filteredItems,
+        category,
       }}
     >
       {children}

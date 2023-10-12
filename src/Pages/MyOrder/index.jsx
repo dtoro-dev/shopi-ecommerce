@@ -14,7 +14,7 @@ const MyOrder = () => {
     <Layout>
       <div className="relative flex w-80 justify-center items-center m-5 font-bold">
         <Link to="/my-orders" className="absolute left-0">
-          <ChevronLeftIcon className="w-6 text-black cursor-pointer hover:bg-slate-400 rounded-full transition ease-in-out hover:scale-11 duration-300" />
+          <ChevronLeftIcon className="w-6 text-black cursor-pointer hover:bg-slate-400 hover:text-white rounded-full transition ease-in-out hover:scale-11 duration-300" />
         </Link>
         <h1>My Order</h1>
       </div>

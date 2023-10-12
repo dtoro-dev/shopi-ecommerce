@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const API = "http://api.escuelajs.co/api/v1/products";
+const API = "https://api.escuelajs.co/api/v1/categories";
 
-const getProducts = async () => {
+const getCategory = async () => {
   try {
     const { data } = await axios.get(API);
     return data;
@@ -12,4 +12,4 @@ const getProducts = async () => {
   }
 };
 
-export { getProducts };
+export { getCategory };

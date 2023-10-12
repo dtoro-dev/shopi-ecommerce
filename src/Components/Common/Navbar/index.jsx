@@ -2,6 +2,7 @@ import { ShoppingCartIcon } from "@heroicons/react/24/solid";
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { CartContext } from "../../../Context/CartContext";
+import Dropdown from "../Dropdown";
 
 const Navbar = () => {
   const context = useContext(CartContext);
@@ -14,57 +15,12 @@ const Navbar = () => {
 
   return (
     <nav className="flex justify-between items-center fixed z-20 w-full py-5 px-8 text-sm font-dark bg-blue-200 top-0">
-      <ul className="flex items-center gap-3">
+      <ul className="flex items-center gap-8">
         <li className="font-bold text-lg">
           <NavLink to="/">Shopi</NavLink>
         </li>
         <li>
-          <NavLink
-            to="/"
-            className={({ isActive }) => (isActive ? activeStyle : undefined)}
-          >
-            All
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/clothes"
-            className={({ isActive }) => (isActive ? activeStyle : undefined)}
-          >
-            Clothes
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/electronics"
-            className={({ isActive }) => (isActive ? activeStyle : undefined)}
-          >
-            Electronics
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/furnitures"
-            className={({ isActive }) => (isActive ? activeStyle : undefined)}
-          >
-            Furnitures
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/toys"
-            className={({ isActive }) => (isActive ? activeStyle : undefined)}
-          >
-            Toys
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/others"
-            className={({ isActive }) => (isActive ? activeStyle : undefined)}
-          >
-            Others
-          </NavLink>
+          <Dropdown title="Categories" items={context.category} />
         </li>
       </ul>
       <ul className="flex items-center gap-3">
