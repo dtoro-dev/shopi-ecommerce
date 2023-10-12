@@ -64,10 +64,10 @@ const Card = (props) => {
           />
           {renderIcon()}
         </figure>
-        <p className="flex justify-between items-center px-1">
-          <div className="text-sm">{title}</div>
-          <div className="text-lg font-bold">$ {price}</div>
-        </p>
+        <div className="flex justify-between items-center px-1">
+          <p className="text-sm">{title}</p>
+          <p className="text-lg font-bold">$ {price}</p>
+        </div>
       </div>
     </>
   );
