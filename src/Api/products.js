@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "http://api.escuelajs.co/api/v1/products";
+const API = "https://api.escuelajs.co/api/v1/products";
 
 const getProducts = async () => {
   try {
@@ -13,3 +13,4 @@ const getProducts = async () => {
 };
 
 export { getProducts };
+
